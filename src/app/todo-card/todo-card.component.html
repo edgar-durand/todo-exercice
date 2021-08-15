@@ -11,9 +11,8 @@
       <textarea *ngIf="edit" [(ngModel)]="todo.description" (change)="handleEdit()">
        {{todo.description}}
       </textarea>
-      <mat-checkbox *ngIf="edit" class="check" [checked]="todo.completed" [(ngModel)]="todo.completed">Completed</mat-checkbox>
       <p *ngIf="!edit">{{todo.description}}</p>
-      <mat-checkbox *ngIf="!edit" class="check" [checked]="todo.completed" [disabled]="true">Completed</mat-checkbox>
+      <mat-checkbox class="check" [checked]="todo.completed" [disabled]="!edit" [(ngModel)]="todo.completed">Completed</mat-checkbox>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions>

@@ -16,4 +16,9 @@ export class HttpService {
     {id:3, name: 'myThird todo', completed: false, description: 'What ever I need to describe.'},
     {id:4, name: 'myFourth todo', completed: true, description: 'What ever I need to describe.'},
   ];
+
+  async getAll(): Promise<ITodo[]> {
+    //It is supposed to be fetched from API ex. await fetch(apiUrl);
+    return this.mockedTodo
+  }
 }

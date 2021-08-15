@@ -15,7 +15,7 @@ export class TodoListComponent implements OnDestroy {
   constructor(private todoService: TodoService) {
     this.todoService.todo$
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(async (todos) => {
+      .subscribe((todos) => {
         const completed = todos.filter((todo) => todo.completed);
         this.completed$.next(completed);
       })

@@ -16,7 +16,7 @@ export class PendingListComponent implements OnDestroy {
   constructor(private todoService: TodoService) {
     this.todoService.todo$
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(async (todos) => {
+      .subscribe((todos) => {
         const pending = todos.filter((todo) => !todo.completed);
         this.pending$.next(pending);
       })

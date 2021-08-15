@@ -11,8 +11,12 @@ export class TodoService {
 
   todo$: BehaviorSubject<ITodo[]> = new BehaviorSubject<ITodo[]>([]);
   constructor(private httpService: HttpService) {
-    this.todo$.next(this.httpService.mockedTodo);
-    this.todo$.subscribe((todo) => console.log(todo));
+     this.initTodo();
+  }
+
+  async initTodo(): Promise<void> {
+    const fetchedFromServer =  await this.httpService.getAll();
+    this.todo$.next(fetchedFromServer);
   }
 
   async delete(id: number): Promise<IResponse> {
