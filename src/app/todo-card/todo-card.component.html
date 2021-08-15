@@ -1,0 +1,22 @@
+<mat-card class="card">
+  <mat-card-header>
+    <div class="check-container">
+      <mat-checkbox class="check" [checked]="edit" [(ngModel)]="edit" (change)="handleEdit()">Edit</mat-checkbox>
+    </div>
+    <mat-card-title>
+      <input *ngIf="edit" matInput type="text" [value]="todo.name" [(ngModel)]="todo.name" (change)="handleEdit()"/>
+      <h2 *ngIf="!edit">{{todo.name}}</h2>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <textarea *ngIf="edit" [(ngModel)]="todo.description" (change)="handleEdit()">
+       {{todo.description}}
+      </textarea>
+      <mat-checkbox *ngIf="edit" class="check" [checked]="todo.completed" [(ngModel)]="todo.completed">Completed</mat-checkbox>
+      <p *ngIf="!edit">{{todo.description}}</p>
+      <mat-checkbox *ngIf="!edit" class="check" [checked]="todo.completed" [disabled]="true">Completed</mat-checkbox>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <button *ngIf="!edit" mat-button (click)="handleDelete()">Delete</button>
+  </mat-card-actions>
+</mat-card>
